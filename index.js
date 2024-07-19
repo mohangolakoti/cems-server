@@ -86,20 +86,21 @@ async function fetchDataAndStore() {
     if (initialEnergyValue !== null) {
       energyConsumption = newData.energy - initialEnergyValue;
     }
+    const todayDate = format(new Date(), 'yyyy-MM-dd');
 
     const query = `
       INSERT INTO sensordata (timestamp, current, power, energy, IRcurrent, IYcurrent, IBcurrent, VRvoltage, VYvoltage, VBvoltage, 
         IRLcurrent, IYLcurrent, IBLcurrent, VRLvoltage, VYLvoltage, VBLvoltage, R_power, Y_power, B_power, Active_power, Reactive_power, 
-        Power_factor, Energy_Meter, Voltage, energy_consumption) 
-      VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        Power_factor, Energy_Meter, Voltage, energy_consumption, date) 
+      VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const values = [
       newData.current, newData.power, newData.energy, newData.IRcurrent, newData.IYcurrent, newData.IBcurrent, 
       newData.VRvoltage, newData.VYvoltage, newData.VBvoltage, newData.IRLcurrent, newData.IYLcurrent, newData.IBLcurrent, 
       newData.VRLvoltage, newData.VYLvoltage, newData.VBLvoltage, newData.R_power, newData.Y_power, newData.B_power, 
-      newData.Active_power, newData.Reactive_power, newData.Power_factor, newData.Energy_Meter, newData.Voltage, energyConsumption
+      newData.Active_power, newData.Reactive_power, newData.Power_factor, newData.Energy_Meter, newData.Voltage, energyConsumption, todayDate
     ];
-
+    
     console.log("Executing query:", query);
     console.log("With values:", values);
 
@@ -118,7 +119,7 @@ async function fetchDataAndStore() {
 
     const currentDate = format(new Date(), 'yyyy-MM-dd');
     const fileName = `VITB_${currentDate}.txt`;
-    const filePath = path.join("D:/VIT-Data", fileName);
+    const filePath = path.join(__dirname, "VIT-Data", fileName);
 
     appendDataToFile(newData, filePath);
   } catch (error) {
@@ -149,7 +150,7 @@ function appendDataToFile(data, filePath) {
 
 initializeInitialEnergyValue().then(() => {
   // Schedule fetchDataAndStore to run every 20 minutes
-  setInterval(fetchDataAndStore, 30*60000);
+  setInterval(fetchDataAndStore, 10*60000);
   // Schedule initializeInitialEnergyValue to run every 24 hours
   setInterval(initializeInitialEnergyValue,  1*60000);
 });
