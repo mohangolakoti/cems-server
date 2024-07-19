@@ -87,14 +87,16 @@ async function fetchDataAndStore() {
       energyConsumption = newData.energy - initialEnergyValue;
     }
 
+    const currentDate = format(new Date(), 'yyyy-MM-dd');
+
     const query = `
       INSERT INTO sensordata (timestamp, current, power, energy, IRcurrent, IYcurrent, IBcurrent, VRvoltage, VYvoltage, VBvoltage, 
         IRLcurrent, IYLcurrent, IBLcurrent, VRLvoltage, VYLvoltage, VBLvoltage, R_power, Y_power, B_power, Active_power, Reactive_power, 
-        Power_factor, Energy_Meter, Voltage, energy_consumption) 
-      VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        Power_factor, Energy_Meter, Voltage, energy_consumption, date) 
+      VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const values = [
-      newData.current, newData.power, newData.energy, newData.IRcurrent, newData.IYcurrent, newData.IBcurrent, 
+      currentDate, newData.current, newData.power, newData.energy, newData.IRcurrent, newData.IYcurrent, newData.IBcurrent, 
       newData.VRvoltage, newData.VYvoltage, newData.VBvoltage, newData.IRLcurrent, newData.IYLcurrent, newData.IBLcurrent, 
       newData.VRLvoltage, newData.VYLvoltage, newData.VBLvoltage, newData.R_power, newData.Y_power, newData.B_power, 
       newData.Active_power, newData.Reactive_power, newData.Power_factor, newData.Energy_Meter, newData.Voltage, energyConsumption
