@@ -152,7 +152,7 @@ initializeInitialEnergyValue().then(() => {
   // Schedule fetchDataAndStore to run every 20 minutes
   setInterval(fetchDataAndStore, 10*60000);
   // Schedule initializeInitialEnergyValue to run every 24 hours
-  setInterval(initializeInitialEnergyValue,  1*60000);
+  setInterval(initializeInitialEnergyValue,  10*60000);
 });
 
 app.listen(port, () => {
