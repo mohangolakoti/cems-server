@@ -29,7 +29,7 @@ let isFirstDataStoredToday = false;
  */
 
 const config = {
-  host: "localhost",
+  host: "192.168.0.113",
   user: "root",
   password: "",
   database: "energy",
