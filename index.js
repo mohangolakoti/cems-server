@@ -20,11 +20,22 @@ let initialEnergyValue = null;
 let firstStoredEnergyValue = null;
 let isFirstDataStoredToday = false;
 
-const config = {
+/* const config = {
   host: process.env.host,
   user: process.env.user,
   password: process.env.password,
   database: process.env.database
+};
+ */
+
+const config = {
+  MYSQL_ADDON_DB: "bet3coyeyxtk3u2scaky",
+  MYSQL_ADDON_HOST: "bet3coyeyxtk3u2scaky-mysql.services.clever-cloud.com",
+  MYSQL_ADDON_PASSWORD: "kE0qCQohuVp2qBdT42oe",
+  MYSQL_ADDON_PORT: "3306",
+  MYSQL_ADDON_URI: "mysql://u6ebueo0egtncpnk:kE0qCQohuVp2qBdT42oe@bet3coyeyxtk3u2scaky-mysql.services.clever-cloud.com:3306/bet3coyeyxtk3u2scaky",
+  MYSQL_ADDON_USER: "u6ebueo0egtncpnk",
+  MYSQL_ADDON_VERSION: "8.0"
 };
 
 // Routes are coming from Routes folder route.js
