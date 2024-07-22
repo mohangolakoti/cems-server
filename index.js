@@ -29,10 +29,10 @@ let isFirstDataStoredToday = false;
  */
 
 const config = {
-  host: "bet3coyeyxtk3u2scaky-mysql.services.clever-cloud.com",
-  user: "u6ebueo0egtncpnk",
-  password: "kE0qCQohuVp2qBdT42oe",
-  database: "bet3coyeyxtk3u2scaky",
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "energy",
   port: 3306
 };
 
