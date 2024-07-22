@@ -29,13 +29,11 @@ let isFirstDataStoredToday = false;
  */
 
 const config = {
-  MYSQL_ADDON_DB: "bet3coyeyxtk3u2scaky",
-  MYSQL_ADDON_HOST: "bet3coyeyxtk3u2scaky-mysql.services.clever-cloud.com",
-  MYSQL_ADDON_PASSWORD: "kE0qCQohuVp2qBdT42oe",
-  MYSQL_ADDON_PORT: "3306",
-  MYSQL_ADDON_URI: "mysql://u6ebueo0egtncpnk:kE0qCQohuVp2qBdT42oe@bet3coyeyxtk3u2scaky-mysql.services.clever-cloud.com:3306/bet3coyeyxtk3u2scaky",
-  MYSQL_ADDON_USER: "u6ebueo0egtncpnk",
-  MYSQL_ADDON_VERSION: "8.0"
+  host: "bet3coyeyxtk3u2scaky-mysql.services.clever-cloud.com",
+  user: "u6ebueo0egtncpnk",
+  password: "kE0qCQohuVp2qBdT42oe",
+  database: "bet3coyeyxtk3u2scaky",
+  port: 3306
 };
 
 // Routes are coming from Routes folder route.js
