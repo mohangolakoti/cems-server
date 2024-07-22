@@ -30,8 +30,8 @@ let isFirstDataStoredToday = false;
 
 const config = {
   host: "192.168.0.113",
-  user: "root",
-  password: "",
+  user: "ram",
+  password: "ram@123",
   database: "energy",
   port: 3306
 };
