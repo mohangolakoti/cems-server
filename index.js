@@ -151,9 +151,9 @@ function appendDataToFile(data, filePath) {
 
 initializeInitialEnergyValue().then(() => {
   // Schedule fetchDataAndStore to run every 20 minutes
-  setInterval(fetchDataAndStore, 8*60000);
+  setInterval(fetchDataAndStore, 5*60000);
   // Schedule initializeInitialEnergyValue to run every 24 hours
-  setInterval(initializeInitialEnergyValue,  20*60000);
+  setInterval(initializeInitialEnergyValue,  5*60000);
 });
 
 app.listen(port, () => {
