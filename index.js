@@ -29,9 +29,9 @@ let isFirstDataStoredToday = false;
  */
 
 const config = {
-  host: "192.168.0.113",
-  user: "ram",
-  password: "ram@123",
+  host: "61.1.174.105",
+  user: "vit",
+  password: "",
   database: "energy",
   port: 3306
 };
@@ -100,14 +100,14 @@ async function fetchDataAndStore() {
     const query = `
       INSERT INTO sensordata (timestamp, current, power, energy, IRcurrent, IYcurrent, IBcurrent, VRvoltage, VYvoltage, VBvoltage, 
         IRLcurrent, IYLcurrent, IBLcurrent, VRLvoltage, VYLvoltage, VBLvoltage, R_power, Y_power, B_power, Active_power, Reactive_power, 
-        Power_factor, Energy_Meter, Voltage, energy_consumption, date) 
-      VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        Power_factor, Energy_Meter, Voltage, energy_consumption) 
+      VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const values = [
       newData.current, newData.power, newData.energy, newData.IRcurrent, newData.IYcurrent, newData.IBcurrent, 
       newData.VRvoltage, newData.VYvoltage, newData.VBvoltage, newData.IRLcurrent, newData.IYLcurrent, newData.IBLcurrent, 
       newData.VRLvoltage, newData.VYLvoltage, newData.VBLvoltage, newData.R_power, newData.Y_power, newData.B_power, 
-      newData.Active_power, newData.Reactive_power, newData.Power_factor, newData.Energy_Meter, newData.Voltage, energyConsumption, todayDate
+      newData.Active_power, newData.Reactive_power, newData.Power_factor, newData.Energy_Meter, newData.Voltage, energyConsumption
     ];
     
     console.log("Executing query:", query);
@@ -159,9 +159,9 @@ function appendDataToFile(data, filePath) {
 
 initializeInitialEnergyValue().then(() => {
   // Schedule fetchDataAndStore to run every 20 minutes
-  setInterval(fetchDataAndStore, 30*60000);
+  setInterval(fetchDataAndStore, 1*60000);
   // Schedule initializeInitialEnergyValue to run every 24 hours
-  setInterval(initializeInitialEnergyValue,  30*60000);
+  setInterval(initializeInitialEnergyValue,  1*60000);
 });
 
 app.listen(port, () => {
