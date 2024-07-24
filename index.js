@@ -20,20 +20,12 @@ let initialEnergyValue = null;
 let firstStoredEnergyValue = null;
 let isFirstDataStoredToday = false;
 
-/* const config = {
+const config = {
   host: process.env.host,
   user: process.env.user,
   password: process.env.password,
-  database: process.env.database
-};
- */
-
-const config = {
-  host: "61.1.174.105",
-  user: "vit",
-  password: "",
-  database: "energy",
-  port: 3306
+  database: process.env.database,
+  port:process.env.port
 };
 
 // Routes are coming from Routes folder route.js
